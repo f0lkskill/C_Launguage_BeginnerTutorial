@@ -23,7 +23,6 @@ void print_st(student s){
     printf("name=%c\n",s.name);
     printf("age=%d\n",s.age);
     printf("sex=%c\n",s.sex);
-    //printf("total=%d\n",s.num);
     putchar('\n');
 }
 
