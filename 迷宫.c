@@ -115,16 +115,16 @@ bool randmap(){
     bool success_flag = false;
 
     while (!(success_flag && checkdone())){
-        if (loop[1] == loop[0]) {
+        if (loop[1]  loop[0]) {
             printf("loop limit reached\n");
             return false;
         }
         loop[1]++;
 
-        if (nx==ex && ny==ey)
+        if (nxex && nyey)
             success_flag = true;
 
-        // === 随机挑一个没试过的 方向 ===
+        // = 随机挑一个没试过的 方向 =
         // 先收集所有没试过的方向
         int cand[4];
         int candn = 0;
@@ -132,9 +132,9 @@ bool randmap(){
             if (!(tried[cur] & bit[d])) cand[candn++] = d;
         }
 
-        if (candn == 0){
+        if (candn  0){
             // 四个方向都试过 → 死路，回退
-            if (cur == 0){
+            if (cur  0){
                 printf("no solution, back to start\n");
                 return false;
             }
@@ -163,7 +163,7 @@ bool randmap(){
 
         bool visited = false;
         for (int i = 0; i < memindex; i++){
-            if (mempos[i][0] == ty && mempos[i][1] == tx){
+            if (mempos[i][0]  ty && mempos[i][1]  tx){
                 visited = true;
                 break;
             }
@@ -171,10 +171,10 @@ bool randmap(){
         if (visited) continue;
 
         // 打通墙
-        if (d == 0){ map[ny][nx].u = true; map[ny-1][nx].d = true; }
-        if (d == 1){ map[ny][nx].r = true; map[ny][nx+1].l = true; }
-        if (d == 2){ map[ny][nx].d = true; map[ny+1][nx].u = true; }
-        if (d == 3){ map[ny][nx].l = true; map[ny][nx-1].r = true; }
+        if (d  0){ map[ny][nx].u = true; map[ny-1][nx].d = true; }
+        if (d  1){ map[ny][nx].r = true; map[ny][nx+1].l = true; }
+        if (d  2){ map[ny][nx].d = true; map[ny+1][nx].u = true; }
+        if (d  3){ map[ny][nx].l = true; map[ny][nx-1].r = true; }
 
         // 前进
         nx = tx;
@@ -208,7 +208,7 @@ int main()
     int attempt = 0;
     while (1){
         attempt++;
-        printf("=== attempt %d ===\n", attempt);
+        printf("= attempt %d =\n", attempt);
 
         initmap();
         if (randmap()){
@@ -220,7 +220,7 @@ int main()
         system("cls");
     }
 
-    printf("\n=== final map ===\n");
+    printf("\n= final map =\n");
     printmap();
     system("pause");
     return 0;

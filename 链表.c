@@ -40,12 +40,12 @@ int main()
         printf("init student=%d\n",i);
 
         student *ns = malloc(sizeof(student));  // 堆上分配
-        if(ns == NULL){ perror("malloc"); return 1; }
+        if(ns  NULL){ perror("malloc"); return 1; }
 
         random_st(ns);
         ns->next = NULL;
 
-        if(head == NULL){
+        if(head  NULL){
             head = ns;      // 第一个节点
         } else {
             tail->next = ns; // 接在尾部
